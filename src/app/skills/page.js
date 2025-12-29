@@ -238,7 +238,7 @@ const Skills = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mx-auto mb-6"></div>
           
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            A comprehensive overview of my technical expertise and the technologies 
+            A comprehensive over-view of My technical expertise and the technologies 
             I use to build <strong className="text-purple-400">modern, scalable, and high-performance</strong> web applications.
           </p>
 
