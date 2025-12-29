@@ -242,41 +242,7 @@ export default function Home() {
                 </div>
 
                 {/* PROGRESS BAR - REPEATS ON SCROLL */}
-                <div className="mb-2">
-                  <div className="h-2.5 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div
-                      key={`progress-${skill.name}-${scrollKey}`}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: false }}
-                      transition={{
-                        duration: 1.5,
-                        delay: 0.2,
-                        ease: "easeOut"
-                      }}
-                      className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
-                    >
-                      {/* Shine effect */}
-                      <motion.div
-                        initial={{ x: "-100%" }}
-                        whileInView={{ x: "100%" }}
-                        viewport={{ once: false }}
-                        transition={{
-                          duration: 1,
-                          delay: 0.8,
-                          repeatDelay: 2
-                        }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                      />
-                    </motion.div>
-                  </div>
-
-                  <div className="flex justify-between mt-2 text-sm text-gray-500">
-                    <span>Beginner</span>
-                    <span>Expert</span>
-                  </div>
-                </div>
-
+              
                 {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mt-4">
                   {["React", "Next.js", "JavaScript", "Node.js"].slice(0, 3).map((tech, i) => (
