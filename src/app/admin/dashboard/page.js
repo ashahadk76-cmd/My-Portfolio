@@ -51,9 +51,10 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-800 to-indigo-600 p-6 pt-30 md:p-10"> 
+    <div className="mt-13" >
+    <div className="min-h-screen bg-gradient-to-r from-gray-800 to-indigo-600 p-6 pt-30 md:p-10  "> 
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-8  ">
         <h1 className="text-3xl font-bold font-sans font-extrabold  ">Admin Dashboard</h1>
         <div className="flex gap-4">
           <Link
@@ -88,7 +89,7 @@ const AdminDashboard = () => {
         </Link>
 
         <Link
-          href={"/admin/projects"}
+          href="/admin/projects/add"
           className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
         >
           <h3 className="text-lg font-semibold text-gray-700">Projects</h3>
@@ -96,7 +97,7 @@ const AdminDashboard = () => {
         </Link>
 
         <Link
-          href="/admin/projects"
+         href="/admin/projects/add"
           className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
         >
           <h3 className="text-lg font-semibold text-gray-700">Add Project</h3>
@@ -108,35 +109,7 @@ const AdminDashboard = () => {
           <p className="text-lg text-gray-600 mt-2">Recent: {queries.length}</p>
         </div>
       </div>
-
-      {/* Recent Queries Preview
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-800">Recent Queries</h2>
-          <Link 
-            href="/admin/queries" 
-            className="text-blue-600 hover:text-blue-800 font-medium"
-          >
-            View All →
-          </Link>
-        </div>
-
-        {queries.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No queries yet</p>
-        ) : (
-          <div className="space-y-4">
-            {queries.slice(0, 5).map((q) => (
-              <div key={q._id || q.id} className="border-l-4 border-blue-500 p-4 bg-gray-50 hover:bg-gray-100">
-                <div className="flex justify-between">
-                  <p className="font-medium text-gray-800">{q.name}</p>
-                  <p className="text-sm text-gray-500">{q.email}</p>
-                </div>
-                <p className="text-gray-600 mt-2 line-clamp-2">{q.message}</p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div> */}
+    </div>
     </div>
   );
 };
