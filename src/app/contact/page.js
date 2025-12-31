@@ -10,7 +10,6 @@ import {
   MessageSquare,
   Clock
 } from 'lucide-react'
-import { set } from 'mongoose'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -59,15 +58,7 @@ const ContactPage = () => {
         }
       })
       .catch((error) => console.error(error));
-    // Simulate API call
-    // setTimeout(() => {
-    //   setIsSubmitting(false)
-    //   setIsSubmitted(true)
-    //   setFormData({ name: '', email: '', message: '' })
-
-    //   // Reset success message after 3 seconds
-    //   setTimeout(() => setIsSubmitted(false), 3000)
-    // }, 1500)
+   
   }
 
   const contactInfo = [
@@ -107,7 +98,7 @@ const ContactPage = () => {
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Touch</span>
           </h1>
           <p className="text-white font-bold max-w-4xl mx-auto">
-           &quote;Have a project in mind or an inquiry? Send me a message, and it will be delivered directly to my email for a prompt response. &quote;
+           Have a project in mind or an inquiry? Send me a message, and it will be delivered directly to my email for a prompt response.
           </p>
         </div>
 
