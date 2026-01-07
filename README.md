@@ -30,7 +30,7 @@ A modern portfolio website built with Next.js, showcasing my projects and skills
    ```bash
    npm run dev
    ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [https://my-portfolio-psi-six-17.vercel.app) in your browser.
 
 ## Scripts
 
