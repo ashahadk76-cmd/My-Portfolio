@@ -65,13 +65,13 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "ashahad@example.com",
+      value: "ashahadkhanind@gmail.com",
       description: "Drop me a message anytime"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Poland",
+      value: "India",
       description: "Based in Poland"
     },
     {

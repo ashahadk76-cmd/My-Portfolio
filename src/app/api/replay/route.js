@@ -30,7 +30,7 @@ export async function POST(request) {
             to: useremail,
             subject: "Replay Received",
             text: replaymessage,
-            html:`
+            html: `
             <p>${replaymessage}</p>
             <p>— Team Ashahad</p>
             <P>Thank you for reaching out to us.</P>

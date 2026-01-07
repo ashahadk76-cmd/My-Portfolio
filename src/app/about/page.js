@@ -66,7 +66,7 @@ const personalInfo = [
   { value: "Ashahad Khan", icon: Users },
   { value: "India", icon: MapPin },
   { value: "1+ Year Experience", icon: Briefcase },
-  { value: "ashahad@example.com", icon: Mail },
+  { value: "ashahadkhanind@gmail.com", icon: Mail },
 ];
 
 const stats = [

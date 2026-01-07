@@ -51,8 +51,8 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="mt-13" >
-    <div className="min-h-screen bg-gradient-to-r from-gray-800 to-indigo-600 p-6 pt-30 md:p-10  "> 
+    <div className=" min-h-screen  mt-13" >
+    <div className="min-h-screen  bg-gradient-to-r from-gray-800 to-indigo-600 p-6 pt-30 md:p-10  "> 
       {/* Header */}
       <div className="flex justify-between items-center mb-8  ">
         <h1 className="text-3xl font-bold font-sans font-extrabold  ">Admin Dashboard</h1>
@@ -96,6 +96,14 @@ const AdminDashboard = () => {
           <p className="text-3xl font-bold text-green-600 mt-2">Manage</p>
         </Link>
 
+
+        <Link href="/admin/deleteproj"
+          className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
+        >
+          <h3 className="text-lg font-semibold text-gray-700">Delete Project</h3>
+          <p className="text-3xl font-bold text-red-600 mt-2">-</p>
+        </Link>
+
         <Link
          href="/admin/projects/add"
           className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
@@ -103,6 +111,8 @@ const AdminDashboard = () => {
           <h3 className="text-lg font-semibold text-gray-700">Add Project</h3>
           <p className="text-3xl font-bold text-purple-600 mt-2">+</p>
         </Link>
+
+        
 
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold text-gray-700">Quick Stats</h3>
