@@ -32,6 +32,8 @@ const DeleteProjectPage = () => {
             const res = await fetch(`/api/project/${String(id)}`, { method: "DELETE" });
             const data = await res.json();
 
+          
+
             if (data.success) {
                 setProjects((prev) => prev.filter((p) => p._id !== id));
             } else {

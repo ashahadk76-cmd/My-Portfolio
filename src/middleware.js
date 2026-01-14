@@ -12,5 +12,20 @@ export function middleware(request) {
         url.pathname = "/admin/dashboard";
         return NextResponse.redirect(url);
     }
+
+
+         
+     
+    if (url.pathname === "/api/query" && authCookie?.value !== "true") {
+        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+    if (url.pathname === "/api/project" && authCookie?.value !== "true") {
+        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+    if (url.pathname === "/api/replay" && authCookie?.value !== "true") {
+        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
+
     return NextResponse.next();
 }
