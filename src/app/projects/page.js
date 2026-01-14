@@ -21,28 +21,28 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function Projects() {
+export default function page() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  useEffect(() => {
-    fetch("/api/project")
-      .then((res) => res.json())
-      .then((data) => {
-        setProjects(data);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      })
-      .catch(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      });
-  }, []);
+useEffect(() => {
+  fetch("/api/project")
+    .then(res => res.json())
+    .then(data => {
+      console.log("API response:", data); // check karo kya aa raha hai
+      setProjects(Array.isArray(data) ? data : []); // ✅ ensure array
+      setTimeout(() => setLoading(false), 1500);
+    })
+    .catch(err => {
+      console.error(err);
+      setProjects([]); // fallback
+      setTimeout(() => setLoading(false), 1500);
+    });
+}, []);
+
 
   useEffect(() => {
     if (!loading) {
@@ -54,10 +54,10 @@ export default function Projects() {
   const categories = ["all"];
 
   // Filter projects
-  const filteredProjects = projects.filter(project => {
-    if (activeFilter === "all") return true;
-    return project.category?.toLowerCase() === activeFilter.toLowerCase();
-  });
+const filteredProjects = Array.isArray(projects)
+  ? projects.filter(p => activeFilter === "all" || p.category?.toLowerCase() === activeFilter.toLowerCase())
+  : [];
+
 
   // Stats
   const stats = [
