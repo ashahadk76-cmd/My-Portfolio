@@ -115,16 +115,7 @@ const filteredProjects = Array.isArray(projects)
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
       
-      {/* Back Button */}
-      <div className="fixed top-6 left-6 z-50">
-        <Link 
-          href="/"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full text-gray-300 hover:text-white hover:border-purple-500 transition-all duration-300 hover:scale-105"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back Home</span>
-        </Link>
-      </div>
+  
 
       {/* ═══════════════════════════════════════════════════════════════ */}
       {/* HERO SECTION */}

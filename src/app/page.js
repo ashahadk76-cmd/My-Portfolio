@@ -242,7 +242,7 @@ export default function Home() {
                 </div>
 
                 {/* PROGRESS BAR - REPEATS ON SCROLL */}
-              
+
                 {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mt-4">
                   {["React", "Next.js", "JavaScript", "Node.js"].slice(0, 3).map((tech, i) => (
@@ -278,12 +278,12 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               {[
                 { name: "JavaScript", level: 95 },
-              
+
                 { name: "React/Next.js", level: 92 },
                 { name: "Node.js", level: 88 },
                 { name: "Python", level: 80 },
                 { name: "MongoDB", level: 85 },
-                
+
                 { name: "Tailwind", level: 95 },
               ].map((skill, i) => (
                 <motion.div
@@ -367,21 +367,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
-      {/* TEST BUTTON FOR SCROLL */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => {
-            setScrollKey(prev => prev + 1)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
-          className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg font-semibold shadow-lg"
-        >
-          Scroll to Top
-        </motion.button>
-      </div>
     </main>
   )
 }
