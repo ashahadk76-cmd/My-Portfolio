@@ -17,15 +17,24 @@ export function middleware(request) {
          
      
     if (url.pathname === "/api/query" && authCookie?.value !== "true") {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        return NextResponse.redirect(new URL("/", request.url));
     }
     if (url.pathname === "/api/project" && authCookie?.value !== "true") {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        return NextResponse.redirect(new URL("/", request.url));
     }
     if (url.pathname === "/api/replay" && authCookie?.value !== "true") {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        return NextResponse.redirect(new URL("/", request.url));
     }
 
 
     return NextResponse.next();
 }
+
+export const config = {
+    matcher: [
+        "/admin/:path*",
+        "/api/query",
+        "/api/project",
+        "/api/replay"
+    ],
+};

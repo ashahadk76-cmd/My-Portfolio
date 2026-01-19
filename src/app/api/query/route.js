@@ -3,7 +3,6 @@ import connectDB from "@/db/connectDB";
 import nodemailer from "nodemailer";
 import query from "@/model/query";
 
- export const runtime = "nodejs";
 
 export async function POST(req) {
     try {
