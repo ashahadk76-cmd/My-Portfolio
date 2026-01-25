@@ -27,47 +27,47 @@ const Page = () => {
       });
   }, []);
 
-// Frontend - /app/admin/queries/page.js
-// const handleDelete = async (id) => {
-//   if (!confirm("Are you sure you want to delete this query?")) return;
+  // Frontend - /app/admin/queries/page.js
+  // const handleDelete = async (id) => {
+  //   if (!confirm("Are you sure you want to delete this query?")) return;
 
-//   fetch(`/api/query/${id}`, {
-//     method: "DELETE",
-//   })
-//     .then(res => res.json()) // ✅ Response parse karo
-//     .then(result => {
-//       console.log("Delete result:", result); // Debug
-//       if (result.success) {
-//         setQueries(prev => prev.filter(q => q._id !== id));
-//         alert("Query deleted successfully ✅");
-//       } else {
-//         alert("Delete failed: " + (result.message || "Unknown error"));
-//       }
-//     })
-//     .catch(err => {
-//       console.error("Delete error:", err);
-//       alert("Network error ❌");
-//     });
-// };
+  //   fetch(`/api/query/${id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then(res => res.json()) // ✅ Response parse karo
+  //     .then(result => {
+  //       console.log("Delete result:", result); // Debug
+  //       if (result.success) {
+  //         setQueries(prev => prev.filter(q => q._id !== id));
+  //         alert("Query deleted successfully ✅");
+  //       } else {
+  //         alert("Delete failed: " + (result.message || "Unknown error"));
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.error("Delete error:", err);
+  //       alert("Network error ❌");
+  //     });
+  // };
 
 
-const handleDelete = async (id) => {
-        if (!confirm("Are you sure you want to delete this project? This action cannot be undone.")) return;
+  const handleDelete = async (id) => {
+    if (!confirm("Are you sure you want to delete this query? This action cannot be undone.")) return;
 
-        try {
-            const res = await fetch(`/api/query/${id}`, { method: "DELETE" });
-            const data = await res.json();
+    try {
+      const res = await fetch(`/api/query/${id}`, { method: "DELETE" });
+      const data = await res.json();
 
-            if (data.success) {
-                alert("Project deleted successfully ✅");
-                setQueries((prev) => prev.filter((col) => col._id !== id));
-            } else {
-                alert(data.message || "Failed to delete project ❌");
-            }
-        } catch (error) {
-            alert("Error deleting project: " + error.message);
-        }
-    };
+      if (data.success) {
+        alert("Query deleted successfully ✅");
+        setQueries((prev) => prev.filter((col) => col._id !== id));
+      } else {
+        alert(data.message || "Failed to delete query ❌");
+      }
+    } catch (error) {
+      alert("Error deleting query: " + error.message);
+    }
+  };
 
 
   // Send reply

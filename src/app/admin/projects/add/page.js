@@ -1,16 +1,16 @@
 "use client"
 import { useState } from 'react'
-import { 
-  PlusCircle, 
-  Upload, 
-  Link as LinkIcon, 
-  Calendar, 
-  Image as ImageIcon,
-  Github,
-  ExternalLink,
-  CheckCircle,
-  XCircle,
-  Loader2
+import {
+    PlusCircle,
+    Upload,
+    Link as LinkIcon,
+    Calendar,
+    Image as ImageIcon,
+    Github,
+    ExternalLink,
+    CheckCircle,
+    XCircle,
+    Loader2
 } from 'lucide-react'
 
 const AdminPage = () => {
@@ -48,9 +48,9 @@ const AdminPage = () => {
                 method: "POST",
                 body: formdata,
             });
-            
+
             const result = await response.json();
-            
+
             if (result.success) {
                 setSubmitStatus('success');
                 setData({
@@ -69,7 +69,7 @@ const AdminPage = () => {
             console.error("Error adding project:", error);
         } finally {
             setIsSubmitting(false);
-            
+
             // Reset status after 3 seconds
             setTimeout(() => {
                 setSubmitStatus(null);
@@ -80,7 +80,7 @@ const AdminPage = () => {
     return (
         <main className="min-h-screen bg-[#0a0a0f] text-white py-35 px-4">
             <div className="max-w-4xl mx-auto">
-                
+
                 {/* Header */}
                 <div className="text-center mb-10">
                     <div className="inline-flex items-center gap-3 mb-4">
@@ -101,7 +101,7 @@ const AdminPage = () => {
                         <span className="text-green-400">Project added successfully!</span>
                     </div>
                 )}
-                
+
                 {submitStatus === 'error' && (
                     <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/30 flex items-center gap-3">
                         <XCircle className="w-5 h-5 text-red-400" />
@@ -112,18 +112,18 @@ const AdminPage = () => {
                 {/* Form Container */}
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl border border-gray-700/50 p-6 md:p-8">
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        
+
                         {/* Title */}
                         <div>
                             <label className="flex items-center gap-2 text-gray-300 mb-3">
                                 <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                                 <span>Project Title</span>
                             </label>
-                            <input 
-                                type="text" 
-                                name="title" 
-                                value={data.title} 
-                                onChange={handleChange} 
+                            <input
+                                type="text"
+                                name="title"
+                                value={data.title}
+                                onChange={handleChange}
                                 required
                                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500"
                                 placeholder="Enter project title"
@@ -136,10 +136,10 @@ const AdminPage = () => {
                                 <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
                                 <span>Description</span>
                             </label>
-                            <textarea 
-                                name="description" 
-                                value={data.description} 
-                                onChange={handleChange} 
+                            <textarea
+                                name="description"
+                                value={data.description}
+                                onChange={handleChange}
                                 required
                                 rows={4}
                                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500 resize-none"
@@ -154,11 +154,11 @@ const AdminPage = () => {
                                     <Calendar className="w-4 h-4 text-purple-400" />
                                     <span>Duration</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    name="duration" 
-                                    value={data.duration} 
-                                    onChange={handleChange} 
+                                <input
+                                    type="text"
+                                    name="duration"
+                                    value={data.duration}
+                                    onChange={handleChange}
                                     className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500"
                                     placeholder="e.g., 2 months"
                                 />
@@ -170,11 +170,11 @@ const AdminPage = () => {
                                     <ImageIcon className="w-4 h-4 text-purple-400" />
                                     <span>Image URL</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    name="imageUrl" 
-                                    value={data.imageUrl} 
-                                    onChange={handleChange} 
+                                <input
+                                    type="text"
+                                    name="imageUrl"
+                                    value={data.imageUrl}
+                                    onChange={handleChange}
                                     required
                                     className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500"
                                     placeholder="https://example.com/image.jpg"
@@ -189,11 +189,11 @@ const AdminPage = () => {
                                     <ExternalLink className="w-4 h-4 text-purple-400" />
                                     <span>Live Demo URL</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    name="proj_Link" 
-                                    value={data.proj_Link} 
-                                    onChange={handleChange} 
+                                <input
+                                    type="text"
+                                    name="proj_Link"
+                                    value={data.proj_Link}
+                                    onChange={handleChange}
                                     className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500"
                                     placeholder="https://your-project.com"
                                 />
@@ -205,11 +205,11 @@ const AdminPage = () => {
                                     <Github className="w-4 h-4 text-purple-400" />
                                     <span>GitHub Repository</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    name="githubcodeLink" 
-                                    value={data.githubcodeLink} 
-                                    onChange={handleChange} 
+                                <input
+                                    type="text"
+                                    name="githubcodeLink"
+                                    value={data.githubcodeLink}
+                                    onChange={handleChange}
                                     className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-gray-500"
                                     placeholder="https://github.com/username/project"
                                 />
@@ -218,14 +218,14 @@ const AdminPage = () => {
 
                         {/* Submit Button */}
                         <div className="pt-4">
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 disabled={isSubmitting}
                                 className={`
                                     w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-3 
                                     transition-all duration-300
-                                    ${isSubmitting 
-                                        ? 'bg-gray-700 cursor-not-allowed' 
+                                    ${isSubmitting
+                                        ? 'bg-gray-700 cursor-not-allowed'
                                         : 'bg-gradient-to-r from-purple-600 to-cyan-600 hover:shadow-2xl hover:shadow-purple-500/25 hover:scale-[1.02]'
                                     }
                                 `}

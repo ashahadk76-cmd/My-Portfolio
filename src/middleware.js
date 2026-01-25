@@ -14,18 +14,9 @@ export function middleware(request) {
     }
 
 
-         
-     
-    if (url.pathname === "/api/query" && authCookie?.value !== "true") {
-        return NextResponse.redirect(new URL("/", request.url));
-    }
-    if (url.pathname === "/api/project" && authCookie?.value !== "true") {
-        return NextResponse.redirect(new URL("/", request.url));
-    }
-    if (url.pathname === "/api/replay" && authCookie?.value !== "true") {
-        return NextResponse.redirect(new URL("/", request.url));
-    }
 
+
+  
 
     return NextResponse.next();
 }
@@ -33,8 +24,5 @@ export function middleware(request) {
 export const config = {
     matcher: [
         "/admin/:path*",
-        "/api/query",
-        "/api/project",
-        "/api/replay"
     ],
 };

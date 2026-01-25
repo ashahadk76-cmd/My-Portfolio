@@ -58,7 +58,7 @@ const ContactPage = () => {
         }
       })
       .catch((error) => console.error(error));
-   
+
   }
 
   const contactInfo = [
@@ -98,7 +98,7 @@ const ContactPage = () => {
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Touch</span>
           </h1>
           <p className="text-white font-bold max-w-4xl mx-auto">
-           Have a project in mind or an inquiry? Send me a message, and it will be delivered directly to my email for a prompt response.
+            Have a project in mind or an inquiry? Send me a message, and it will be delivered directly to my email for a prompt response.
           </p>
         </div>
 
