@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  ExternalLink, 
-  Github, 
-  Calendar, 
-  Code2, 
+import {
+  ExternalLink,
+  Github,
+  Calendar,
+  Code2,
   Layers,
   Sparkles,
   ArrowRight,
@@ -28,20 +28,20 @@ export default function page() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredProject, setHoveredProject] = useState(null);
 
-useEffect(() => {
-  fetch("/api/project")
-    .then(res => res.json())
-    .then(data => {
-      console.log("API response:", data); // check karo kya aa raha hai
-      setProjects(Array.isArray(data) ? data : []); // ✅ ensure array
-      setTimeout(() => setLoading(false), 1500);
-    })
-    .catch(err => {
-      console.error(err);
-      setProjects([]); // fallback
-      setTimeout(() => setLoading(false), 1500);
-    });
-}, []);
+  useEffect(() => {
+    fetch("/api/project")
+      .then(res => res.json())
+      .then(data => {
+        console.log("API response:", data); // check karo kya aa raha hai
+        setProjects(Array.isArray(data) ? data : []); // ✅ ensure array
+        setTimeout(() => setLoading(false), 1500);
+      })
+      .catch(err => {
+        console.error(err);
+        setProjects([]); // fallback
+        setTimeout(() => setLoading(false), 1500);
+      });
+  }, []);
 
 
   useEffect(() => {
@@ -54,9 +54,9 @@ useEffect(() => {
   const categories = ["all"];
 
   // Filter projects
-const filteredProjects = Array.isArray(projects)
-  ? projects.filter(p => activeFilter === "all" || p.category?.toLowerCase() === activeFilter.toLowerCase())
-  : [];
+  const filteredProjects = Array.isArray(projects)
+    ? projects.filter(p => activeFilter === "all" || p.category?.toLowerCase() === activeFilter.toLowerCase())
+    : [];
 
 
   // Stats
@@ -114,8 +114,8 @@ const filteredProjects = Array.isArray(projects)
 
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
-      
-  
+
+
 
       {/* ═══════════════════════════════════════════════════════════════ */}
       {/* HERO SECTION */}
@@ -126,7 +126,7 @@ const filteredProjects = Array.isArray(projects)
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[120px]"></div>
 
-        <div 
+        <div
           className={`relative z-10 text-center max-w-4xl mx-auto transition-all duration-1000 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           {/* Icon Badge */}
@@ -142,7 +142,7 @@ const filteredProjects = Array.isArray(projects)
 
           {/* Subtitle */}
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-            A collection of real-world applications built with modern technologies, 
+            A collection of real-world applications built with modern technologies,
             best practices, and a passion for clean code.
           </p>
 
@@ -204,7 +204,7 @@ const filteredProjects = Array.isArray(projects)
               <Filter className="w-4 h-4" />
               <span className="text-sm">Filter by category</span>
             </div>
-            
+
             {/* Filter Buttons */}
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map((category) => (
@@ -237,7 +237,7 @@ const filteredProjects = Array.isArray(projects)
       {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          
+
           {filteredProjects.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
@@ -257,8 +257,8 @@ const filteredProjects = Array.isArray(projects)
                   {/* Project Image */}
                   <div className="h-52 bg-gradient-to-br from-purple-900/30 to-cyan-900/30 relative overflow-hidden">
                     {project.imageUrl ? (
-                      <img 
-                        src={project.imageUrl?.startsWith("/") || project.imageUrl?.startsWith("http") ? project.imageUrl.trim() : "/placeholder.png"} 
+                      <img
+                        src={project.imageUrl?.startsWith("/") || project.imageUrl?.startsWith("http") ? project.imageUrl.trim() : "/placeholder.png"}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
@@ -267,10 +267,10 @@ const filteredProjects = Array.isArray(projects)
                         <Layers className="w-20 h-20 text-gray-700" />
                       </div>
                     )}
-                    
+
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-70"></div>
-                    
+
                     {/* Category Badge */}
                     {project.category && (
                       <div className="absolute top-4 left-4">
@@ -347,7 +347,7 @@ const filteredProjects = Array.isArray(projects)
                           <span>Live Demo</span>
                         </a>
                       )}
-                      
+
                       {project.githubcodeLink && (
                         <a
                           href={project.githubcodeLink}
@@ -375,7 +375,7 @@ const filteredProjects = Array.isArray(projects)
               </div>
               <h3 className="text-2xl font-bold text-gray-300 mb-4">No Projects Found</h3>
               <p className="text-gray-500 max-w-md mx-auto mb-8">
-                {activeFilter === "all" 
+                {activeFilter === "all"
                   ? "No projects added yet. Check back soon for amazing work!"
                   : `No ${activeFilter} projects available. Try selecting a different category.`
                 }
@@ -423,7 +423,7 @@ const filteredProjects = Array.isArray(projects)
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS", "Express", "PostgreSQL", "GraphQL", "Docker", "AWS", "Firebase"].map((tech, index) => (
+            {["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS", "Express",].map((tech, index) => (
               <div
                 key={tech}
                 className="px-5 py-3 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
@@ -440,21 +440,21 @@ const filteredProjects = Array.isArray(projects)
       {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
-        
+
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 text-purple-400 mb-4">
             <Rocket className="w-5 h-5" />
             <span className="text-sm font-medium uppercase tracking-wider">Let&apos;s Collaborate</span>
           </div>
-          
+
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Have a <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Project Idea?</span>
           </h2>
           <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            I&apos;m always excited to work on new projects and bring creative ideas to life. 
+            I&apos;m always excited to work on new projects and bring creative ideas to life.
             Let&apos;s build something amazing together!
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/#contact"

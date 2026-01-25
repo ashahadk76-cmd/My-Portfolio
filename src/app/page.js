@@ -278,12 +278,10 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               {[
                 { name: "JavaScript", level: 95 },
-
                 { name: "React/Next.js", level: 92 },
                 { name: "Node.js", level: 88 },
                 { name: "Python", level: 80 },
                 { name: "MongoDB", level: 85 },
-
                 { name: "Tailwind", level: 95 },
               ].map((skill, i) => (
                 <motion.div
