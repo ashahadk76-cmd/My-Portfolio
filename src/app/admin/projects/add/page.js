@@ -1,6 +1,7 @@
 "use client"
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect} from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+
 import {
     PlusCircle,
     Upload,
@@ -387,16 +388,7 @@ function ProjectFormContent() {
 export default function ProjectFormPage() {
     return (
         <main className="min-h-screen bg-[#0a0a0f] text-white py-20 px-4">
-            <Suspense fallback={
-                <div className="max-w-4xl mx-auto flex items-center justify-center min-h-[60vh]">
-                    <div className="text-center">
-                        <Loader2 className="w-12 h-12 animate-spin text-purple-500 mx-auto mb-4" />
-                        <p className="text-gray-400">Loading...</p>
-                    </div>
-                </div>
-            }>
-                <ProjectFormContent />
-            </Suspense>
+            <ProjectFormContent />
         </main>
     )
 }
