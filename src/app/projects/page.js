@@ -28,21 +28,31 @@ export default function page() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredProject, setHoveredProject] = useState(null);
 
+  // 🔥 FIX 1: API Response handle kiya
   useEffect(() => {
     fetch("/api/project")
       .then(res => res.json())
       .then(data => {
-        console.log("API response:", data); // check karo kya aa raha hai
-        setProjects(Array.isArray(data) ? data : []); // ✅ ensure array
+        console.log("API response:", data);
+        
+        // ✅ Projects nikaalo (array mein convert karo)
+        const projectsArray = data.projects || data.data || data || [];
+        setProjects(Array.isArray(projectsArray) ? projectsArray : []);
+        
         setTimeout(() => setLoading(false), 1500);
       })
       .catch(err => {
         console.error(err);
-        setProjects([]); // fallback
+        setProjects([]);
         setTimeout(() => setLoading(false), 1500);
       });
   }, []);
 
+  // 🔥 FIX 2: Categories auto generate
+  const categories = [
+    "all",
+    ...new Set(projects.map(p => p.category).filter(Boolean))
+  ];
 
   useEffect(() => {
     if (!loading) {
@@ -50,14 +60,10 @@ export default function page() {
     }
   }, [loading]);
 
-  // Project categories
-  const categories = ["all"];
-
   // Filter projects
-  const filteredProjects = Array.isArray(projects)
-    ? projects.filter(p => activeFilter === "all" || p.category?.toLowerCase() === activeFilter.toLowerCase())
-    : [];
-
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(p => p.category?.toLowerCase() === activeFilter.toLowerCase());
 
   // Stats
   const stats = [
@@ -115,11 +121,7 @@ export default function page() {
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
 
-
-
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* HERO SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="min-h-[60vh] flex items-center justify-center px-6 pt-20 relative">
         {/* Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
@@ -150,7 +152,7 @@ export default function page() {
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-2 text-gray-400">
               <Rocket className="w-5 h-5 text-purple-400" />
-              <span>{projects.length || "50+"}  Projects</span>
+              <span>{projects.length} Projects</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
               <Star className="w-5 h-5 text-yellow-400" />
@@ -164,9 +166,7 @@ export default function page() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* STATS SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -193,9 +193,7 @@ export default function page() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* FILTER SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-8 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center gap-4">
@@ -232,9 +230,7 @@ export default function page() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* PROJECTS GRID */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
 
@@ -258,12 +254,15 @@ export default function page() {
                   <div className="h-52 bg-gradient-to-br from-purple-900/30 to-cyan-900/30 relative overflow-hidden">
                     {project.media?.length > 0 ? (
                       <img
-                        src={project.media[0].url}
+                        src={project.media[0].url || project.media[0]}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://placehold.co/600x400/1a1a1a/white?text=No+Image";
+                        }}
                       />
                     ) : (
-
                       <div className="w-full h-full flex items-center justify-center">
                         <Layers className="w-20 h-20 text-gray-700" />
                       </div>
@@ -283,13 +282,12 @@ export default function page() {
 
                     {/* Hover View Button */}
                     <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${hoveredProject === project._id ? 'opacity-100' : 'opacity-0'}`}>
-                      <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                        <Eye className="w-4 h-4 text-white" />
-                        <span className="text-white text-sm font-medium">
-                          <Link href={`/details?id=${project._id}`}>
-                            View Details
-                          </Link> </span>
-                      </div>
+                      <Link href={`/details?id=${project._id}`}>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 cursor-pointer">
+                          <Eye className="w-4 h-4 text-white" />
+                          <span className="text-white text-sm font-medium">View Details</span>
+                        </div>
+                      </Link>
                     </div>
                     
                   </div>
@@ -323,21 +321,23 @@ export default function page() {
                     </div>
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.techStack?.slice(0, 3).map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 bg-gray-800/80 rounded-lg text-xs text-purple-300 border border-gray-700/50"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.techStack?.length > 3 && (
-                        <span className="px-2.5 py-1 bg-gray-800/80 rounded-lg text-xs text-gray-400 border border-gray-700/50">
-                          +{project.techStack.length - 3}
-                        </span>
-                      )}
-                    </div>
+                    {project.techStack && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.techStack.slice(0, 3).map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 bg-gray-800/80 rounded-lg text-xs text-purple-300 border border-gray-700/50"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.techStack.length > 3 && (
+                          <span className="px-2.5 py-1 bg-gray-800/80 rounded-lg text-xs text-gray-400 border border-gray-700/50">
+                            +{project.techStack.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    )}
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
@@ -409,9 +409,7 @@ export default function page() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* TECH STACK SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-6 bg-gray-900/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -440,9 +438,7 @@ export default function page() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
       {/* CTA SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
 
