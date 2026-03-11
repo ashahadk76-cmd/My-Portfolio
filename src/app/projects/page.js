@@ -469,8 +469,10 @@ export default function page() {
               className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-700 rounded-xl font-semibold hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-300"
             >
               <span>About Me</span>
+              
             </Link>
           </div>
+          
 
           {/* Decorative Line */}
           <div className="flex items-center justify-center gap-4 mt-12">

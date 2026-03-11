@@ -93,7 +93,7 @@ const skills = [
     title: "Database",
     color: "from-purple-500 to-pink-400",
     borderColor: "hover:border-purple-500/50",
-    items: ["MongoDB", "MySQL", "PostgreSQL", "Firebase"],
+    items: ["MongoDB","mongoDB atlas"],
   },
   {
     title: "Tools",
@@ -124,10 +124,10 @@ const education = [
   {
     degree: "Bachelor of Computer Applications (BCA)",
     field: "Computer Science",
-    institution: "University",
-    year: "2023 – Present (2nd Year)",
+    institution: "MS University",
+    year: "2025 – 2028 (2nd Year | 4th Semester)",
     description:
-      "Currently pursuing BCA with a strong focus on programming fundamentals, data structures, databases, and software development alongside hands-on web development.",
+      "Currently pursuing BCA with strong focus on programming fundamentals, data structures, databases, and software development alongside hands-on web development.",
   },
   {
     degree: "Higher Secondary (12th)",

@@ -71,13 +71,13 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: "Location",
-      value: "India",
-      description: "Based in Poland"
+      value: "Delhi",
+      description: "Based in India"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 XXXX 013017",
+      value: "+91 8475013017",
       description: "Available for calls"
     },
     {

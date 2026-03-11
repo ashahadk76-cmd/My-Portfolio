@@ -88,6 +88,7 @@ export default function Home() {
               <span className="text-sm text-green-400">Available for new projects</span>
             </div>
           </motion.div>
+          
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -95,7 +96,8 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
-            A curated portfolio showcasing real-world experience <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">, problem-solving, and scalable digital solutions.</span>
+            A curated portfolio showcasing real-world experience 
+            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">, problem-solving, and scalable digital solutions.</span>
           </motion.h1>
 
           <motion.p
@@ -130,7 +132,7 @@ export default function Home() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/cv.pdf"
+              href="/ashahadcv1.pdf"
               className="px-8 py-3 border-2 border-gray-700 rounded-xl font-semibold hover:border-purple-500 hover:bg-purple-500/10 transition-colors flex items-center gap-2"
             >
               <Download className="w-5 h-5" /> Download CV
@@ -280,7 +282,6 @@ export default function Home() {
                 { name: "JavaScript", level: 95 },
                 { name: "React/Next.js", level: 92 },
                 { name: "Node.js", level: 88 },
-                { name: "Python", level: 80 },
                 { name: "MongoDB", level: 85 },
                 { name: "Tailwind", level: 95 },
               ].map((skill, i) => (

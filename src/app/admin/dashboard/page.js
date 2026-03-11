@@ -56,7 +56,7 @@ const AdminDashboard = () => {
 
     <div className="min-h-screen  bg-gradient-to-r from-gray-800 to-indigo-600 p-6 pt-30 md:p-10  ">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8  ">
+      <div className="flex justify-between items-center mb-8 mt-23 ">
         <h1 className="text-3xl font-bold font-sans font-extrabold  ">Admin Dashboard</h1>
         <div className="flex gap-4">
           <Link
