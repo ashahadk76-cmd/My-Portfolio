@@ -372,9 +372,9 @@ export default function Home() {
 
           <div className="grid grid-cols-3 gap-4 mt-8">
             {[
-              { number: "50+", label: "Projects" },
-              { number: "30+", label: "Clients" },
-              { number: "3+", label: "Years Exp" },
+              { number: "15+", label: "Projects" },
+              { number: "8+", label: "Clients" },
+              { number: "2+", label: "Years Exp" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -385,7 +385,9 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50"
               >
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">{stat.number}</div>
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  {stat.number}
+                </div>
                 <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
               </motion.div>
             ))}
