@@ -31,7 +31,7 @@ export default function Home() {
   // LOADER 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center relative overflow-hidden  ">
+      <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center relative overflow-hidden ">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse"></div>
           <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-cyan-600/20 rounded-full blur-[80px] animate-pulse"></div>
